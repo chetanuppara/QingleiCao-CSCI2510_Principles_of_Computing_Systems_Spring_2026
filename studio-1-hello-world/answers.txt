@@ -1,0 +1,24 @@
+CSCI 2510 studio1
+Chetan Uppara
+
+1. #include <stdio.h>
+
+2. The function printf() takes only a format string and optional arguments:
+int printf(const char *format, ...);
+
+The function fprintf() takes a FILE stream as its first argument, followed by the format string:
+int fprintf(FILE *stream, const char *format, ...);
+
+The key difference is that fprintf() allows you to choose where the output goes, while printf() always sends output to standard output.
+
+3. printf() writes formatted output to standard output (stdout).  
+fprintf() writes formatted output to a specific output stream that you provide.
+
+4. System calls are located in Section 2 of the Linux manual.
+
+5. The header file needed to use write() is: #include <unistd.h>
+
+6. If the third parameter of write() is larger than the actual size of the string, the program may display extra random characters after the intended message. This occurs because write() outputs exactly the number of bytes specified, even if that includes memory beyond the string, which leads to undefined behavior.
+
+A C library function should be used when portability and ease of use are important. 
+System calls should be used when low-level control or direct interaction with the operating system is required.
