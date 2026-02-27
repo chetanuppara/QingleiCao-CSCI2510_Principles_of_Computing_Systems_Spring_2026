@@ -1,0 +1,25 @@
+CSCI 2510 Studio 2 - I/O
+Name: Chetan Uppara
+
+ When I run `cat` with no file, it waits for keyboard input (stdin). Anything I type is printed back to the terminal (stdout). Pressing Ctrl+D sends EOF, so `cat` stops and returns to the shell.
+
+(2) `cat < mars.txt` redirects stdin from the file instead of the keyboard. `cat` prints the contents of mars.txt to the screen and then exits when it reaches EOF in the file.
+
+(3) `cat < mars.txt > new.txt` redirects stdin from mars.txt and redirects stdout into new.txt. Nothing prints to the terminal because the output goes into new.txt. new.txt ends up containing the same contents as mars.txt.
+
+(4) `cat > new.txt` redirects stdout to new.txt. Whatever I type is written into new.txt, and when I press Ctrl+D it finishes. This overwrites (replaces) any previous contents of new.txt.
+
+(5) `cat >> new.txt` appends instead of overwriting. Whatever I type gets added to the end of new.txt, and Ctrl+D finishes.
+
+(6) `read()` and `write()` are declared in the header file:
+    #include <unistd.h>
+
+(7)
+
+(8) The return type of `read()` is `ssize_t`. End-of-file is indicated when `read()` returns 0.
+
+(9) After compiling copy.c, running `./copy` behaves like `cat`: it echoes keyboard input until Ctrl+D, it prints files correctly using input redirection (e.g., `./copy < mars.txt`), and it supports output redirection (e.g., `./copy < mars.txt > out.txt`).
+
+(10) Changing bufferSize does not change correctness as long as the program writes exactly the number of bytes returned by `read()`. With bufferSize = 1 it still matches the file output (diff shows identical) but it is less efficient because it makes many more system calls. Larger buffer sizes also produce identical output and are typically faster due to fewer system calls.
+
+(11) Tradeoff: Small buffers use less memory but require many more `read()`/`write()` calls (slower). Large buffers use more memory but require fewer system calls (usually faster).
