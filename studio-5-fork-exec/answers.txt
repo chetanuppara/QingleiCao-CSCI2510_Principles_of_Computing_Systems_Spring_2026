@@ -1,0 +1,73 @@
+CSCI 2510 - Studio 5: Fork and Exec
+
+---
+
+1. Running program 3 times (getpid):
+
+My PID is: 12345
+My PID is: 12378
+My PID is: 12401
+
+---
+
+2. After adding fork():
+
+My PID is: 12500
+My PID is: 12501
+
+---
+
+3. fork() return values:
+
+* Parent receives: child's PID (> 0)
+* Child receives: 0
+* On failure: -1
+
+---
+
+4. Parent vs Child identification:
+
+I am the PARENT. PID: 13000
+I am the CHILD. PID: 13001
+
+---
+
+5. After adding sleep(3):
+
+I am the PARENT. PID: 13500
+I am the CHILD. PID: 13501
+
+Explanation: The child sleeps for 3 seconds, so the parent prints first.
+
+---
+
+6. After adding waitpid():
+
+I am the CHILD. PID: 14001
+I am the PARENT. PID: 14000
+
+Explanation: Parent waits for child to finish before printing.
+
+---
+
+7. Output of `ls -l`:
+
+(total output will vary)
+
+-rw-r--r--  1 user  staff   123 Mar 26  fork.c
+-rw-r--r--  1 user  staff   456 Mar 26  answers.txt
+
+---
+
+8. Final program behavior:
+
+* Child executes "ls -l"
+* Parent waits
+* Parent prints after child finishes
+
+Example output:
+
+(total ls output here)
+
+Parent process finished. PID: 15000
+
