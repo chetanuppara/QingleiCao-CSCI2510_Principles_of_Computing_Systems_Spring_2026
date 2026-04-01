@@ -1,0 +1,40 @@
+Exercise 1 Output:
+Enter a command: hello world
+hello world
+
+Exercise 2 Answer:
+The first call to strtok() takes the original string as input, while subsequent calls use NULL to continue parsing the same string.
+
+Exercise 3 Answer:
+A space character " " should be used as the delimiter.
+
+Exercise 4 Output:
+Enter a command: hello world
+hello
+
+Exercise 5 Output:
+Enter a command: this is an input string
+this
+is
+an
+input
+string
+
+Exercise 6 (Newline Stripping Code):
+input[strcspn(input, "\n")] = '\0';
+
+Exercise 8 Answer:
+cmd = token;
+
+Exercise 9 Answer:
+int i = 0;
+while (token != NULL && i < max_args) {
+    my_argv[i] = token;
+    token = strtok(NULL, " ");
+    i++;
+}
+my_argv[i] = NULL;
+
+Exercise 10 Output:
+Enter a command: ls -l
+(total directory listing appears here)
