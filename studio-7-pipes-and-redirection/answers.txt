@@ -1,0 +1,10 @@
+Q3:
+fd[0] = read end of pipe
+fd[1] = write end of pipe
+
+Q4:
+The second argument (target file descriptor) is closed when dup2() succeeds.
+
+PROGRAM OUTPUT
+
+Program 2 got: Program 1 output line
