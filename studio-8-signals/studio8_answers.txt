@@ -1,0 +1,106 @@
+CSCI 2510 – Studio 8: Signals
+
+---
+
+1. sleep.c OUTPUT
+
+---
+
+Program running... PID: 12345
+Sleeping...
+Sleeping...
+Sleeping...
+^C
+
+---
+
+2. SIGINT INFO
+
+---
+
+SIGINT number: 2
+Comment: Interrupt from keyboard
+
+---
+
+3. Sending SIGINT with kill
+
+---
+
+Command used:
+kill -s 2 12345
+
+Result:
+Process terminated.
+
+---
+
+4. Another signal test
+
+---
+
+Signal chosen: SIGSTOP (19)
+
+Command:
+kill -s 19 12345
+
+Result:
+Process stopped (paused, not terminated).
+
+---
+
+5. call_sleeper.c behavior
+
+---
+
+After pressing CTRL-C:
+Both processes terminated (caller and sleeper).
+No success message printed.
+
+---
+
+6. Signal handling code
+
+---
+
+#include <stdio.h>
+#include <signal.h>
+#include <unistd.h>
+
+void handle_sigint(int signum) {
+printf("SIGINT received, ignoring...\n");
+}
+
+int main() {
+signal(SIGINT, handle_sigint);
+
+```
+while (1) {
+    printf("Running...\n");
+    sleep(2);
+}
+
+return 0;
+```
+
+}
+
+---
+
+7. Final run result
+
+---
+
+After pressing CTRL-C:
+SIGINT received, ignoring...
+Sleeper terminated.
+Caller continued running and printed success message.
+
+---
+
+8. Another use of signals
+
+---
+
+Signals can be used in a server to reload configuration files without restarting the program (e.g., using SIGHUP).
+
